@@ -28,28 +28,30 @@ def draw():
 def update():
     global score
     global game_over
+
     if keyboard.left:
-        nathan.x=nathan.x-5
+        nathan.x -= 5
     if keyboard.right:
-        nathan.x=nathan.x+5
-    if nathan.colliderect(rock) == True:
-        game_over = True
-    if nathan.colliderect(rock) == False:
-        rock.x=randint(70,(WIDTH-70))
-        score+=1
-        
-    if rock.y > HEIGHT: 
-        rock.y = 100
-    rock.y=rock.y+5
+        nathan.x += 5
+
+   
+    rock.y += 5
+
     
+    if nathan.colliderect(rock):
+        game_over = True
+
+     
+    if rock.y > HEIGHT:
+        
+        if not nathan.colliderect(rock):
+            score += 1
+        
+        
+        rock.y = 0
+        rock.x = randint(70, WIDTH - 70)
     
 
 
 
 pgzrun.go()
-
-
-
-
-
-
